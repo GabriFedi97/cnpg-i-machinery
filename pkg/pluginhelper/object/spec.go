@@ -74,6 +74,7 @@ func InjectPluginVolumeSpec(spec *corev1.PodSpec) {
 }
 
 // InjectPluginSidecar refer to InjectPluginSidecarSpec.
+// Deprecated: use InjectPluginSidecarInitContainer instead.
 func InjectPluginSidecar(pod *corev1.Pod, sidecar *corev1.Container, injectPostgresVolumeMounts bool) error {
 	return InjectPluginSidecarSpec(&pod.Spec, sidecar, injectPostgresVolumeMounts)
 }
@@ -94,6 +95,7 @@ func InjectPluginSidecarInitContainer(pod *corev1.Pod,
 //
 // Besides the value of "injectPostgresVolumeMount", the plugin volume
 // will always be injected in the PostgreSQL container.
+// Deprecated: use InjectPluginInitContainerSidecarSpec instead.
 func InjectPluginSidecarSpec(spec *corev1.PodSpec, sidecar *corev1.Container, injectPostgresVolumeMounts bool) error {
 	if sidecar == nil || spec == nil {
 		return nil
